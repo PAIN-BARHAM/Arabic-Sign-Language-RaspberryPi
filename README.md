@@ -8,3 +8,4 @@ Components:
 2. Keyboard
 3. RaspberryPi 4
 4. HDMI
+5. programmer
