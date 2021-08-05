@@ -6,3 +6,4 @@ Components:
 
 1. LCD
 2. Keyboard
+3. RaspberryPi 4
