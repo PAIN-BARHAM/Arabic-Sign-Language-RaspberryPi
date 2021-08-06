@@ -9,7 +9,6 @@ green = (100,100,100)
 
 # assigning values to X and Y variable
 X = 0
-
 Y = 0
 
 # create the display surface object
@@ -28,13 +27,13 @@ height = screen_height // 2
 pygame.display.set_caption('Image')
 
 # create a surface object, image is drawn on it.
-image1 = pygame.image.load(r'/home/pi/Desktop/ArSL_proj/images/Alef.png')
+image1 = pygame.image.load(r'/home/pi/Desktop/ArSL_proj/Arabic-Sign-Language-RaspberryPi/images/Alef.png')
 
-image2 = pygame.image.load(r'/home/pi/Desktop/ArSL_proj/images/Beh.png')
+image2 = pygame.image.load(r'/home/pi/Desktop/ArSL_proj/Arabic-Sign-Language-RaspberryPi/images/Beh.jpeg')
 
-image3 = pygame.image.load(r'/home/pi/Desktop/ArSL_proj/images/Wow.png')
+image3 = pygame.image.load(r'/home/pi/Desktop/ArSL_proj/Arabic-Sign-Language-RaspberryPi/images/Wow.png')
 
-image4 = pygame.image.load(r'/home/pi/Desktop/ArSL_proj/images/Yeh.png')
+image4 = pygame.image.load(r'/home/pi/Desktop/ArSL_proj/Arabic-Sign-Language-RaspberryPi/images/Yeh.png')
 
 
 
