@@ -29,7 +29,7 @@ pygame.display.set_caption('Image')
 # create a surface object, image is drawn on it.
 image1 = pygame.image.load(r'/home/pi/Desktop/ArSL_proj/Arabic-Sign-Language-RaspberryPi/images/Alef.png')
 
-image2 = pygame.image.load(r'/home/pi/Desktop/ArSL_proj/Arabic-Sign-Language-RaspberryPi/images/Beh.jpeg')
+image2 = pygame.image.load(r'/home/pi/Desktop/ArSL_proj/Arabic-Sign-Language-RaspberryPi/images/Beh.png')
 
 image3 = pygame.image.load(r'/home/pi/Desktop/ArSL_proj/Arabic-Sign-Language-RaspberryPi/images/Wow.png')
 
@@ -48,6 +48,7 @@ def getKey(KeyName):
     for eve in pygame.event.get():pass
 
     keyInput = pygame.key.get_pressed()
+
 	
     myKey = getattr(pygame, 'K_{}'.format(KeyName))
     if keyInput [myKey]:
