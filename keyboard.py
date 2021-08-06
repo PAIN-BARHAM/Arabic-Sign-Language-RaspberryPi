@@ -5,21 +5,31 @@ clock = pygame.time.Clock()
 # define the RGB value
 # for white colour
 white = (255, 255, 255)
+green = (100, 100, 100)
 
 # assigning values to X and Y variable
-X = 700
-Y = 700
+X = 0
+
+Y = 0
 
 # create the display surface object
 # of specific dimension..e(X, Y).
+flags = pygame.FULLSCREEN
 display_surface = pygame.display.set_mode((X, Y))
+
+screen_width = pygame.display.get_surface().get_size()[0]
+screen_height = pygame.display.get_surface().get_size()[1]
+
+width = screen_width // 2
+height = screen_height // 2
+
 
 # set the pygame window name
 pygame.display.set_caption("Image")
 
 # create a surface object, image is drawn on it.
-image1 = pygame.image.load(r"/home/pi/Desktop/ArSL_proj/download.jpeg")
-image2 = pygame.image.load(r"/home/pi/Desktop/ArSL_proj/Beh.jpeg")
+image1 = pygame.image.load(r"/home/pi/Desktop/ArSL_proj/Alef.png")
+image2 = pygame.image.load(r"/home/pi/Desktop/ArSL_proj/Beh.png")
 
 
 def init():
@@ -33,6 +43,7 @@ def getKey(KeyName):
     clock.tick(10)
     for eve in pygame.event.get():
         pass
+
     keyInput = pygame.key.get_pressed()
 
     myKey = getattr(pygame, "K_{}".format(KeyName))
@@ -55,14 +66,20 @@ def main():
     if getKey("a"):
         print("Key a was pressed")
         display_surface.fill(white)
-        display_surface.blit(image1, (0, 0))
+        display_surface.blit(image1, (20, 20))
     if getKey("b"):
         print("Key b was pressed")
         display_surface.fill(white)
-        display_surface.blit(image2, (0, 0))
+        display_surface.blit(image2, (20, 20))
+
+    if getKey("z"):
+        print("Key z was pressed")
+        display_surface.fill(white)
+        pygame.display.quit()
 
 
 if __name__ == "__main__":
     init()
+    print(pygame.display.Info())
     while True:
         main()
