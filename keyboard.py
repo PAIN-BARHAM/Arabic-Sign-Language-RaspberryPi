@@ -29,7 +29,10 @@ pygame.display.set_caption("Image")
 
 # create a surface object, image is drawn on it.
 image1 = pygame.image.load(r"/home/pi/Desktop/ArSL_proj/Alef.png")
+image1 = pygame.transform.scale(image1, (400, 240))
+
 image2 = pygame.image.load(r"/home/pi/Desktop/ArSL_proj/Beh.png")
+image2 = pygame.transform.scale(image2, (400, 240))
 
 
 def init():
