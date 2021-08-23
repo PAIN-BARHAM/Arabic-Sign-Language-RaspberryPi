@@ -114,6 +114,7 @@ def main():
 
     if getKey("e"):
         print("---------------------- Video .....................................")
+
         cap = cv2.VideoCapture('test.mp4')
         success, img = cap.read()
         shape = img.shape[1::-1]
@@ -127,8 +128,10 @@ def main():
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     success = False
-            wn.blit(pygame.image.frombuffer(img.tobytes(), shape, "BGR"), (0, 0))
-            pygame.display.update()
+            if success:
+                wn.blit(pygame.image.frombuffer(img.tobytes(), shape, "BGR"), (0, 0))
+                pygame.display.update()
+        #display_surface.fill(white)
 
 
     if getKey("KP_ENTER"):
