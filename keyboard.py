@@ -1,4 +1,5 @@
 import pygame
+import cv2
 
 clock = pygame.time.Clock()
 # win = pygame.display.set_mode((100,100))
@@ -27,20 +28,25 @@ height = screen_height // 2
 pygame.display.set_caption("Image")
 
 # create a surface object, image is drawn on it.
+import os
+os.path.isfile('images/Alef.png') 
+
+
 image1 = pygame.image.load(
-    r"/home/pi/Desktop/ArSL_proj/Arabic-Sign-Language-RaspberryPi/images/Alef.png"
+    r"images/Alef.png"
 )
 
+
 image2 = pygame.image.load(
-    r"/home/pi/Desktop/ArSL_proj/Arabic-Sign-Language-RaspberryPi/images/Beh.png"
+    r"images/Beh.png"
 )
 
 image3 = pygame.image.load(
-    r"/home/pi/Desktop/ArSL_proj/Arabic-Sign-Language-RaspberryPi/images/Wow.png"
+    r"images/Wow.png"
 )
 
 image4 = pygame.image.load(
-    r"/home/pi/Desktop/ArSL_proj/Arabic-Sign-Language-RaspberryPi/images/Yeh.png"
+    r"images/Yeh.png"
 )
 
 
@@ -104,6 +110,26 @@ def main():
         print("Key z was pressed")
         display_surface.fill(white)
         pygame.display.quit()
+
+
+    if getKey("e"):
+        print("---------------------- Video .....................................")
+        cap = cv2.VideoCapture('test.mp4')
+        success, img = cap.read()
+        shape = img.shape[1::-1]
+
+        wn = pygame.display.set_mode(shape)
+        clock = pygame.time.Clock()
+
+        while success:
+            clock.tick(60)
+            success, img = cap.read()
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    success = False
+            wn.blit(pygame.image.frombuffer(img.tobytes(), shape, "BGR"), (0, 0))
+            pygame.display.update()
+
 
     if getKey("KP_ENTER"):
         display_surface.fill(white)

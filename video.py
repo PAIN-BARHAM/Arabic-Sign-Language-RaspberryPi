@@ -1,8 +1,11 @@
 import cv2
 import pygame
+
 cap = cv2.VideoCapture('test.mp4')
+
 success, img = cap.read()
 shape = img.shape[1::-1]
+
 wn = pygame.display.set_mode(shape)
 clock = pygame.time.Clock()
 
