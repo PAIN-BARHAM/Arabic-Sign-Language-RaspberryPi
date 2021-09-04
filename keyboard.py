@@ -91,6 +91,36 @@ def main():
         # display_surface.blit(image1, (20, 20))
         Test += "h"
 
+    if getKey("l"):
+        print("Key l was pressed")
+        display_surface.fill(white)
+        # display_surface.blit(image1, (20, 20))
+        Test += "l"
+
+    if getKey("v"):
+        print("Key v was pressed")
+        display_surface.fill(white)
+        # display_surface.blit(image1, (20, 20))
+        Test += "v"
+
+    if getKey("s"):
+        print("Key s was pressed")
+        display_surface.fill(white)
+        # display_surface.blit(image1, (20, 20))
+        Test += "S"
+
+    if getKey("m"):
+        print("Key m was pressed")
+        display_surface.fill(white)
+        # display_surface.blit(image1, (20, 20))
+        Test += "m"
+
+    if getKey("RIGHTBRACKET"):
+        print("Key ] was pressed")
+        display_surface.fill(white)
+        # display_surface.blit(image1, (20, 20))
+        Test += "]"
+
     if getKey("f"):
         print("Key b was pressed")
         display_surface.fill(white)
@@ -139,6 +169,26 @@ def main():
         print(Test)
         if Test == "h":
             display_surface.blit(image1, (20, 20))
+        
+        if Test == "l]vSm":
+            cap = cv2.VideoCapture('1.mp4')
+            success, img = cap.read()
+            shape = img.shape[1::-1]
+
+            wn = pygame.display.set_mode(shape)
+            clock = pygame.time.Clock()
+
+            while success:
+                clock.tick(30)
+                success, img = cap.read()
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        success = False
+                if success:
+                    wn.blit(pygame.image.frombuffer(img.tobytes(), shape, "BGR"), (0, 0))
+                    pygame.display.update()
+                
+                #print("Hello World")
 
         Test = ""
 
@@ -148,3 +198,7 @@ if __name__ == "__main__":
     print(pygame.display.Info())
     while True:
         main()
+
+
+
+
