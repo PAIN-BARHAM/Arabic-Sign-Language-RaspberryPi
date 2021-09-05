@@ -9,20 +9,23 @@ clock = pygame.time.Clock()
 white = (255, 255, 255)
 green = (100, 100, 100)
 
-# assigning values to X and Y variable
-X = 0
-Y = 0
+
 
 # create the display surface object
 # of specific dimension..e(X, Y).
-flags = pygame.FULLSCREEN
+# flags = pygame.FULLSCREEN
+
+# assigning values to X and Y variable
+X = 480
+Y = 320
+
 display_surface = pygame.display.set_mode((X, Y))
 
-screen_width = pygame.display.get_surface().get_size()[0]
-screen_height = pygame.display.get_surface().get_size()[1]
+#screen_width = pygame.display.get_surface().get_size()[0]
+#screen_height = pygame.display.get_surface().get_size()[1]
 
-width = screen_width // 2
-height = screen_height // 2
+#width = screen_width // 2
+#height = screen_height // 2
 
 
 # set the pygame window name
@@ -132,7 +135,10 @@ def main():
     if getKey("f"):
         print("Key b was pressed")
         display_surface.fill(white)
-        display_surface.blit(image2, (20, 20))
+        shape = (480, 320)
+        picture = pygame.transform.scale(image2,shape)
+        display_surface.blit(picture, (0,0))
+        #display_surface.blit(image2, (20, 20))
 
     if getKey("d"):
         print("Key d was pressed")
