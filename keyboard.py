@@ -141,10 +141,11 @@ def main():
 
     if getKey("COMMA"):
         print("Key d was pressed")
+        
         display_surface.fill(white)
         display_surface.blit(image3, (20, 20))
 
-    if getKey("z"):
+    if getKey("ESCAPE"):
         print("Key z was pressed")
         display_surface.fill(white)
         pygame.display.quit()
@@ -182,7 +183,8 @@ def main():
         #display_surface.fill(white)
 
 
-    if getKey("q"):
+    if getKey("RETURN"):
+        print("RETURN BUTTON")
         display_surface.fill(white)
         print(Test)
         if Test == "h":
@@ -209,6 +211,9 @@ def main():
                 #print("Hello World")
 
         Test = ""
+    
+    # if getKey('RETURN'):
+    #     print("KP_RETURN")
 
 
 if __name__ == "__main__":
