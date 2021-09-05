@@ -1,6 +1,7 @@
 import pygame
 import cv2
 
+
 clock = pygame.time.Clock()
 # win = pygame.display.set_mode((100,100))
 # define the RGB value
@@ -58,7 +59,7 @@ def init():
 def getKey(KeyName):
 
     ans = False
-    pygame.time.delay(30)
+    pygame.time.delay(25)
     for eve in pygame.event.get():
         pass
 
@@ -74,6 +75,13 @@ def getKey(KeyName):
 
 
 Test = ""
+
+def rescale_frame(frame, percent=50):
+    scale_percent = percent
+    width  = int(frame.shape[1] * scale_percent/100)
+    height = int(frame.shape[0] * scale_percent/100)
+    dim = (width,height)
+    return cv2.resize(frame,dim,interpolation=cv2.INTER_AREA)
 
 
 def main():
@@ -146,15 +154,25 @@ def main():
         print("---------------------- Video .....................................")
 
         cap = cv2.VideoCapture('test.mp4')
+        #cap.set(3,480)
+        #cap.set(4,320)
+        #cap.resize(189)
         success, img = cap.read()
-        shape = img.shape[1::-1]
-
+        #img = rescale_frame(img, percent=50)
+        #shape = img.shape[1::-1]
+        #shape = (640,180)
+        shape = (320,180)
+        print(shape)
         wn = pygame.display.set_mode(shape)
         clock = pygame.time.Clock()
 
         while success:
             clock.tick(60)
             success, img = cap.read()
+            #if not isinstance(img, NoneType):
+            if img is not None:
+                img = rescale_frame(img, percent=50)
+            #print("After_scaling: {}".format(img.shape[1::-1]))
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     success = False
@@ -164,7 +182,7 @@ def main():
         #display_surface.fill(white)
 
 
-    if getKey("KP_ENTER"):
+    if getKey("q"):
         display_surface.fill(white)
         print(Test)
         if Test == "h":
