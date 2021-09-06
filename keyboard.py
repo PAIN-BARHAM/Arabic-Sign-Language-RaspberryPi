@@ -36,21 +36,21 @@ import os
 os.path.isfile('images/Alef.png') 
 
 
-image1 = pygame.image.load(
-    r"ArSL_Makanee/Images/Alef.jpg"
+Alef = pygame.image.load(
+    r"images/Alef.png"
 )
 
 
-image2 = pygame.image.load(
-    r"images/Beh.png"
+Baa = pygame.image.load(
+    r"images/Baa.png"
 )
 
-image3 = pygame.image.load(
-    r"images/Wow.png"
+Taa = pygame.image.load(
+    r"images/Taa.png"
 )
 
-image4 = pygame.image.load(
-    r"images/Yeh.png"
+Jeem = pygame.image.load(
+    r"images/Jeem.png"
 )
 
 
@@ -108,7 +108,7 @@ def main():
         # display_surface.blit(image1, (20, 20))
         #shape = (448,252)
         #picture = pygame.transform.scale(image1,shape)
-        picture = rescale_image(image1,10)
+        picture = rescale_image(Alef,10)
         display_surface.blit(picture, (0,0))
         Test += "h"
 
@@ -146,7 +146,7 @@ def main():
         print("Key b was pressed")
         display_surface.fill(white)
         shape = (448,252)
-        picture = pygame.transform.scale(image2,shape)
+        picture = pygame.transform.scale(Baa,shape)
         display_surface.blit(picture, (0,0))
         #display_surface.blit(image2, (20, 20))
 
