@@ -53,6 +53,29 @@ Jeem = pygame.image.load(
     r"images/Jeem.png"
 )
 
+Meem = pygame.image.load(
+    r"images/Meem.png"
+)
+
+Daal = pygame.image.load(
+    r"images/Daal.png"
+)
+
+Raa = pygame.image.load(
+    r"images/Raa.png"
+)
+
+Seen = pygame.image.load(
+    r"images/Seen.png"
+)
+
+Ta_marbuta = pygame.image.load(
+    r"images/Ta_marbuta.png"
+)
+Yaa = pygame.image.load(
+    r"images/Yaa.png"
+)
+
 
 def init():
     pygame.init()
@@ -62,7 +85,7 @@ def init():
 def getKey(KeyName):
 
     ans = False
-    pygame.time.delay(25)
+    pygame.time.delay(20)
     for eve in pygame.event.get():
         pass
 
@@ -83,6 +106,7 @@ def rescale_frame(frame, percent=50):
     width  = int(frame.shape[1] * percent/100)
     height = int(frame.shape[0] * percent/100)
     dim = (width,height)
+    print(dim)
     return cv2.resize(frame,dim,interpolation=cv2.INTER_AREA)
 
 
@@ -97,69 +121,77 @@ def main():
     # completely fill the surface object
     # with white colour:
 
-    # copying the image surface object
-    # to the display surface object at
-    # (0, 0) coordinate.
     global Test
+
+    if getKey("BACKSPACE"):
+        print("Key BACKSPACE was pressed")
+        display_surface.fill(white)
+        Test = ""
 
     if getKey("h"):
         print("Key a was pressed")
         display_surface.fill(white)
-        # display_surface.blit(image1, (20, 20))
-        #shape = (448,252)
-        #picture = pygame.transform.scale(image1,shape)
-        picture = rescale_image(Alef,10)
-        display_surface.blit(picture, (0,0))
+        image = rescale_image(Alef,90)
+        display_surface.blit(image, (0,0))
         Test += "h"
+
+
+    if getKey("f"):
+        print("Key b was pressed")
+        display_surface.fill(white)
+        image = rescale_image(Baa,90)
+        display_surface.blit(image, (0,0))
+        Test += 'f'
+        
+    if getKey("j"):
+        print("Key j was pressed")
+        display_surface.fill(white)
+        image = rescale_image(Taa,90)
+        display_surface.blit(image, (0,0))
+        Test += 'j'  
+    
 
     if getKey("l"):
         print("Key l was pressed")
         display_surface.fill(white)
-        # display_surface.blit(image1, (20, 20))
+        image = rescale_image(Meem,90)
+        display_surface.blit(image, (0,0))
         Test += "l"
 
     if getKey("v"):
         print("Key v was pressed")
         display_surface.fill(white)
-        # display_surface.blit(image1, (20, 20))
+        image = rescale_image(Raa,90)
+        display_surface.blit(image, (0,0))
         Test += "v"
 
     if getKey("s"):
         print("Key s was pressed")
         display_surface.fill(white)
-        # display_surface.blit(image1, (20, 20))
+        image = rescale_image(Seen,90)
+        display_surface.blit(image, (0, 0))
         Test += "S"
 
     if getKey("m"):
         print("Key m was pressed")
         display_surface.fill(white)
-        # display_surface.blit(image1, (20, 20))
+        image = rescale_image(Ta_marbuta,90)
+        display_surface.blit(image, (0, 0))
         Test += "m"
 
     if getKey("RIGHTBRACKET"):
         print("Key ] was pressed")
         display_surface.fill(white)
-        # display_surface.blit(image1, (20, 20))
+        image = rescale_image(Daal,90)
+        display_surface.blit(image, (0, 0))
         Test += "]"
-
-    if getKey("f"):
-        print("Key b was pressed")
-        display_surface.fill(white)
-        shape = (448,252)
-        picture = pygame.transform.scale(Baa,shape)
-        display_surface.blit(picture, (0,0))
-        #display_surface.blit(image2, (20, 20))
 
     if getKey("d"):
         print("Key d was pressed")
         display_surface.fill(white)
-        display_surface.blit(image4, (20, 20))
-
-    if getKey("COMMA"):
-        print("Key d was pressed")
-        
-        display_surface.fill(white)
-        display_surface.blit(image3, (20, 20))
+        image = rescale_image(Yaa,90)
+        display_surface.blit(image, (20, 20))
+        Test += 'd'
 
     if getKey("ESCAPE"):
         print("Key z was pressed")
@@ -171,13 +203,8 @@ def main():
         print("---------------------- Video .....................................")
 
         cap = cv2.VideoCapture('test.mp4')
-        #cap.set(3,480)
-        #cap.set(4,320)
-        #cap.resize(189)
+
         success, img = cap.read()
-        #img = rescale_frame(img, percent=50)
-        #shape = img.shape[1::-1]
-        #shape = (640,180)
         shape = (448,252)
         print(shape)
         wn = pygame.display.set_mode(shape)
@@ -186,50 +213,62 @@ def main():
         while success:
             clock.tick(60)
             success, img = cap.read()
-            #if not isinstance(img, NoneType):
             if img is not None:
                 img = rescale_frame(img, percent=70)
-            #print("After_scaling: {}".format(img.shape[1::-1]))
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     success = False
             if success:
                 wn.blit(pygame.image.frombuffer(img.tobytes(), shape, "BGR"), (0, 0))
                 pygame.display.update()
-        #display_surface.fill(white)
 
 
     if getKey("RETURN"):
         print("RETURN BUTTON")
         display_surface.fill(white)
-        print(Test)
-        if Test == "h":
-            display_surface.blit(image1, (20, 20))
         
         if Test == "l]vSm":
             cap = cv2.VideoCapture('1.mp4')
             success, img = cap.read()
-            shape = img.shape[1::-1]
-
+            shape = (448,246)
             wn = pygame.display.set_mode(shape)
             clock = pygame.time.Clock()
 
             while success:
                 clock.tick(30)
                 success, img = cap.read()
+                if img is not None:
+                    img = rescale_frame(img, percent=70)
+                
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
                         success = False
                 if success:
                     wn.blit(pygame.image.frombuffer(img.tobytes(), shape, "BGR"), (0, 0))
                     pygame.display.update()
-                
-                #print("Hello World")
+        
+        elif Test == "fdj":
+            cap = cv2.VideoCapture('2.mp4')
+            success, img = cap.read()
+            shape = (448,246)
+            wn = pygame.display.set_mode(shape)
+            clock = pygame.time.Clock()
 
+            while success:
+                clock.tick(30)
+                success, img = cap.read()
+                if img is not None:
+                    img = rescale_frame(img, percent=70)
+                
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        success = False
+                        
+                if success:
+                    wn.blit(pygame.image.frombuffer(img.tobytes(), shape, "BGR"), (0, 0))
+                    pygame.display.update()    
+                
         Test = ""
-    
-    # if getKey('RETURN'):
-    #     print("KP_RETURN")
 
 
 if __name__ == "__main__":
@@ -237,7 +276,3 @@ if __name__ == "__main__":
     print(pygame.display.Info())
     while True:
         main()
-
-
-
-
