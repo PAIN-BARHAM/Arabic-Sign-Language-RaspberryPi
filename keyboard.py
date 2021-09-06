@@ -1,6 +1,6 @@
+#! /home/pi/.virtualenvs/sbb_cv/bin/python3
 import pygame
 import cv2
-
 
 clock = pygame.time.Clock()
 # win = pygame.display.set_mode((100,100))
@@ -37,7 +37,7 @@ os.path.isfile('images/Alef.png')
 
 
 image1 = pygame.image.load(
-    r"images/Alef.png"
+    r"ArSL_Makanee/Images/Alef.jpg"
 )
 
 
@@ -80,11 +80,17 @@ def getKey(KeyName):
 Test = ""
 
 def rescale_frame(frame, percent=50):
-    scale_percent = percent
-    width  = int(frame.shape[1] * scale_percent/100)
-    height = int(frame.shape[0] * scale_percent/100)
+    width  = int(frame.shape[1] * percent/100)
+    height = int(frame.shape[0] * percent/100)
     dim = (width,height)
     return cv2.resize(frame,dim,interpolation=cv2.INTER_AREA)
+
+
+def rescale_image(image,percent):
+    width = int(image.get_width() * percent/100)
+    height = int(image.get_height() * percent/100)
+    dim = (width, height)
+    return pygame.transform.scale(image,dim)
 
 
 def main():
@@ -100,6 +106,10 @@ def main():
         print("Key a was pressed")
         display_surface.fill(white)
         # display_surface.blit(image1, (20, 20))
+        #shape = (448,252)
+        #picture = pygame.transform.scale(image1,shape)
+        picture = rescale_image(image1,10)
+        display_surface.blit(picture, (0,0))
         Test += "h"
 
     if getKey("l"):
@@ -135,7 +145,7 @@ def main():
     if getKey("f"):
         print("Key b was pressed")
         display_surface.fill(white)
-        shape = (480, 320)
+        shape = (448,252)
         picture = pygame.transform.scale(image2,shape)
         display_surface.blit(picture, (0,0))
         #display_surface.blit(image2, (20, 20))
@@ -168,7 +178,7 @@ def main():
         #img = rescale_frame(img, percent=50)
         #shape = img.shape[1::-1]
         #shape = (640,180)
-        shape = (320,180)
+        shape = (448,252)
         print(shape)
         wn = pygame.display.set_mode(shape)
         clock = pygame.time.Clock()
@@ -178,7 +188,7 @@ def main():
             success, img = cap.read()
             #if not isinstance(img, NoneType):
             if img is not None:
-                img = rescale_frame(img, percent=50)
+                img = rescale_frame(img, percent=70)
             #print("After_scaling: {}".format(img.shape[1::-1]))
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
