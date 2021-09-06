@@ -199,28 +199,28 @@ def main():
         pygame.display.quit()
 
 
-    if getKey("e"):
-        print("---------------------- Video .....................................")
+    # if getKey("e"):
+    #     print("---------------------- Video .....................................")
 
-        cap = cv2.VideoCapture('test.mp4')
+    #     cap = cv2.VideoCapture('test.mp4')
 
-        success, img = cap.read()
-        shape = (448,252)
-        print(shape)
-        wn = pygame.display.set_mode(shape)
-        clock = pygame.time.Clock()
+    #     success, img = cap.read()
+    #     shape = (448,252)
+    #     print(shape)
+    #     wn = pygame.display.set_mode(shape)
+    #     clock = pygame.time.Clock()
 
-        while success:
-            clock.tick(60)
-            success, img = cap.read()
-            if img is not None:
-                img = rescale_frame(img, percent=70)
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    success = False
-            if success:
-                wn.blit(pygame.image.frombuffer(img.tobytes(), shape, "BGR"), (0, 0))
-                pygame.display.update()
+    #     while success:
+    #         clock.tick(60)
+    #         success, img = cap.read()
+    #         if img is not None:
+    #             img = rescale_frame(img, percent=70)
+    #         for event in pygame.event.get():
+    #             if event.type == pygame.QUIT:
+    #                 success = False
+    #         if success:
+    #             wn.blit(pygame.image.frombuffer(img.tobytes(), shape, "BGR"), (0, 0))
+    #             pygame.display.update()
 
 
     if getKey("RETURN"):
